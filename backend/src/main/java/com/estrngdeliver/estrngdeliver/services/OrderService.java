@@ -39,7 +39,7 @@ public class OrderService {
     .collect(Collectors.toList());
   }
 
-  @Transactional(readOnly = true)
+  @Transactional()
   public OrderDTO insert(OrderDTO dto) {
     
     Order order = new Order(
@@ -60,7 +60,7 @@ public class OrderService {
       return new OrderDTO(order);
   }
   
-  @Transactional(readOnly = true)
+  @Transactional()
   public OrderDTO setDelivered(Long id) {
     
     Order order = repository.getOne(id);
