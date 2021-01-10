@@ -18,6 +18,18 @@ body {
   font-family: "Fira Code", sans-serif;
 }
 
+body::-webkit-scrollbar {
+  width: 3px;
+  border-radius: 50px;
+  /* display: none; */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--dark-color);
+  border-radius: 50px;
+  size: 10px;
+}
+
 a {
   text-decoration: none;
 }
