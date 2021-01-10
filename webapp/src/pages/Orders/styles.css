@@ -32,6 +32,11 @@
   list-style-type: none;
 }
 
+.steps-items li,
+strong {
+  color: var(--primary-color);
+}
+
 .steps-items li {
   font-weight: normal;
   font-size: 18px;
