@@ -207,6 +207,9 @@ strong {
   padding: 20px;
 }
 
+.order-summary-content button {
+  margin-top: 32px;
+}
 .amount-selected-container {
   font-weight: normal;
   font-size: 11px;
