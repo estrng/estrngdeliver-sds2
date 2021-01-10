@@ -14,4 +14,11 @@ export type OrderLocationData = {
   address: string;
 };
 
+type ProductId = {
+  id: number;
+};
+
+export type OrderPayload = {
+  product: ProductId[];
+} & OrderLocationData; // TIP merge de tipos
 // TIP tipagem de modelo de dados para ajduar a programação

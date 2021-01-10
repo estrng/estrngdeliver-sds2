@@ -11,6 +11,7 @@ import OrderLocation from "../../components/OrderLocation";
 import Footer from "../../components/Footer";
 import OrderSummary from "../../components/OrderSumary";
 import { checkIsSelected, sumOfPrices } from "../../functions/helpers";
+import { toast } from "react-toastify";
 
 function Orders() {
   const [orderLocation, setOrderLocation] = useState<OrderLocationData>();
@@ -22,13 +23,13 @@ function Orders() {
       const { data } = await api.get("/products");
       setProducts(data);
     } catch (error) {
+      toast.error("Não foi pssivel fazer a requisição");
       console.log(error);
     }
   }
 
   useEffect(() => {
     getOrders();
-    console.log(products);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -43,6 +44,24 @@ function Orders() {
     } else {
       setSelectedProducts((previous) => [...previous, product]);
     }
+  };
+
+  const handleSubmit = () => {
+    const productsIds = selectedProducts.map(({ id }) => ({ id }));
+    const payload = {
+      ...orderLocation!,
+      products: productsIds,
+    };
+
+    api
+      .post("/orders", payload)
+      .then((response) => {
+        toast.error(`Pedido enviado com sucesso! N° ${response.data.id}`);
+        setSelectedProducts([]);
+      })
+      .catch(() => {
+        toast.warning("Erro ao enviar pedido");
+      });
   };
 
   return (
@@ -63,6 +82,7 @@ function Orders() {
       <OrderSummary
         amount={selectedProducts.length}
         totalPrice={sumOfPrices(selectedProducts)}
+        onSubmit={handleSubmit}
       />
       <Footer />
     </div>
