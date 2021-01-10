@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Product } from "./types";
+import { OrderLocationData, Product } from "./types";
 import ProductsList from "../../components/ProductsList.tsx";
 import StepsHeader from "../../components/StepsHeader";
 
@@ -7,8 +7,11 @@ import api from "../../services/api";
 
 import "./styles.css";
 import Loading from "../../components/Loading";
+import OrderLocation from "../../components/OrderLocation";
+import Footer from "../../components/Footer";
 
 function Orders() {
+  const [orderLocation, setOrderLocation] = useState<OrderLocationData>();
   const [products, setProducts] = useState<Product[]>([]); // TIP para typescript
 
   async function getOrders() {
@@ -34,6 +37,10 @@ function Orders() {
       ) : (
         <ProductsList products={products} />
       )}
+      <OrderLocation
+        onChangeLocation={(location) => setOrderLocation(location)} // TIP o eventofilho esta enviando um envento para o pai
+      />
+      <Footer />
     </div>
   );
 }
