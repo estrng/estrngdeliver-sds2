@@ -1,14 +1,21 @@
-export default function OrderSummary() {
+import { formatPrice } from "../../functions/helpers";
+
+type Props = {
+  amount: number;
+  totalPrice: number;
+};
+
+export default function OrderSummary({ amount, totalPrice }: Props) {
   return (
     <div className="order-summary-container">
       <div className="order-summary-content">
         <div>
           <span className="amount-selected-container">
-            <h2 className="amount-selected">2</h2>
+            <h2 className="amount-selected">{amount}</h2>
             PEDIDOS SELECIONADOS
           </span>
           <span className="order-summary-total">
-            <h2 className="amount-selected">R$ 50,00</h2>
+            <h2 className="amount-selected">{formatPrice(totalPrice)}</h2>
             VALOR TOTAL
           </span>
         </div>

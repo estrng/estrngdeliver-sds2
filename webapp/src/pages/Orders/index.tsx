@@ -10,7 +10,7 @@ import Loading from "../../components/Loading";
 import OrderLocation from "../../components/OrderLocation";
 import Footer from "../../components/Footer";
 import OrderSummary from "../../components/OrderSumary";
-import { checkIsSelected } from "../../functions/helpers";
+import { checkIsSelected, sumOfPrices } from "../../functions/helpers";
 
 function Orders() {
   const [orderLocation, setOrderLocation] = useState<OrderLocationData>();
@@ -60,7 +60,10 @@ function Orders() {
       <OrderLocation
         onChangeLocation={(location) => setOrderLocation(location)} // TIP o eventofilho esta enviando um envento para o pai
       />
-      <OrderSummary />
+      <OrderSummary
+        amount={selectedProducts.length}
+        totalPrice={sumOfPrices(selectedProducts)}
+      />
       <Footer />
     </div>
   );
