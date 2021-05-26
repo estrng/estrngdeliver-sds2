@@ -40,7 +40,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Jose Ivan Ribeiro de Oliveira </br> (@Estrongbelgier) </br>
+José Ivan Ribeiro de Oliveira </br> (@Estrongbelgier) </br>
 www.estrongbelgier.tech
 </br>
 [linkkle](https://linkkle.com/estrongbelgier)
